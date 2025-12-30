@@ -12,10 +12,12 @@ app = Flask(__name__)
 CORS(app)
 
 # === CONFIGURATION ===
-LEAGUE_ID = 123456  # Your ESPN league ID
+import os
+
+LEAGUE_ID = int(os.environ.get('LEAGUE_ID', 123456))  # Your ESPN league ID
 YEAR = 2025
-ESPN_S2 = ""   # Your espn_s2 cookie (for private leagues)
-SWID = ""     # Your SWID cookie (for private leagues)
+ESPN_S2 = os.environ.get('ESPN_S2', '')   # Your espn_s2 cookie (for private leagues)
+SWID = os.environ.get('SWID', '')     # Your SWID cookie (for private leagues)
 REGULAR_SEASON_WEEKS = 13
 
 # Pre-defined second H2H schedule - edit this at season start
